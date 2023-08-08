@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    a, p {
+    font-size: 20px; 
+   }
+    * {
+      padding: 0;
+      margin: 0;
+      
+      box-sizing: border-box;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+  li{
+      margin-right: 20px;
+      list-style-type: none;
+  }
+  </style>
+  <title>{% block title %}{% endblock %} | El Templo Del Vino</title>
+
+</head>
+
+<body>
+
+  <h1>El Templo Del Vino</h1>
+  <h3>De Norte a Sur</h3>
+  <br>
+  <!-- Navegación -->
+  <nav>
+    <div>
+      <a href="{% url 'home' %}">El templo del vino</a>
+      <br>
+      <br>
+      <ul style="display: flex; flex-direction: row; ">
+        <li>
+          <a href="{% url 'home' %}">Inicio</a>
+        </li>
+        <li>
+          <a href="{% url 'about' %}">Historia</a>
+        </li>
+        <li>
+          <a href="{% url 'services' %}">Servicios</a>
+        </li>
+        <li>
+          <a href="{% url 'store' %}">Visítanos</a>
+        </li>
+        <li>
+          <a href="{% url 'contact' %}">Contacto</a>
+        </li>
+        <li>
+          <a href="{% url 'blog' %}">Blog</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+  <br>
+  <br>
+  {% block content %} {% endblock %}
+  <br>
+  <br>
+  <br>
+  <!-- Pié de página -->
+  <footer>
+    
+    {% if LINK_FACEBOOK %}
+    <p>Síguenos en <a href="{{ LINK_FACEBOOK }}" target="_blank">Facebook</a></p>
+    {% endif %}
+    {% if LINK_INSTAGRAM %}
+    <p>Síguenos en <a href="{{ LINK_INSTAGRAM }}" target="_blank">Instagram</a></p>
+    {% endif %}
+    {% if LINK_TWITTER %}
+    <p>Síguenos en <a href="{{ LINK_TWITTER }}" target="_blank">Twitter</a></p>
+    {% endif %}
+  
+    <br>
+    <br>
+    <div style="display: flex; flex-direction: row;">
+    {% for title,id in pages.items %}
+    <p style="margin-right: 15px;"><a href="{% url 'page' page_id=id %}">{{ title }}</a></p>
+    {% endfor %}
+  </div>
+    <p>El Templo Del Vino 2023</p>
+  
+  </footer>
+
+
+</body>
+
+</html>

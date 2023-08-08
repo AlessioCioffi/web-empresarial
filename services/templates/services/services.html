@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Servicios{% endblock %}
+
+{% block content %}
+
+<h1>Servicios</h1>
+<br>
+
+{% for service in services reversed %}
+
+  <h2>{{ service.title }}</h2>
+  <h3>{{ service.subtitle }}</h3>
+  <img style="width: 30%;" src="{{ service.image.url }}">
+  <p>{{ service.content }}</p>
+  <br>
+  <br>
+
+{% endfor %}
+{% endblock %}
+

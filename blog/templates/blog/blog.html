@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  Blog
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <div>
+      <h3>{{ post.published|date:"SHORT_DATE_FORMAT" }}</h3>
+      <h2>{{ post.title }}</h2>
+      {% if post.image %}
+        <img src="{{ post.image.url }}" style="width: 20%;">
+      {% endif %}
+      <p>{{ post.content|linebreaks }}</p>
+      <p>
+        Publicado por {{ post.author }} en
+        {% for category in post.category.all %}
+          <a href="{% url 'category' category.id %}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      </p>
+    </div>
+    <br>
+    <br>
+  {% endfor %}
+{% endblock %}

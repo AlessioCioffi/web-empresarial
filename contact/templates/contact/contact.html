@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+{% if 'ok' in request.GET %}
+<p>Su mensaje se ha enviado correctamente, en breve nos pondremos en contacto con usted.</p>
+{% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+       
+            <table>
+           {{ form.as_p }}
+        </table>
+        <input type="submit" value="Enviar">
+        
+    </div>
+</form>
+
+<!--Metodo para fucionar el cormulario con archivos statics
+<form action="" method="POST">
+    {% csrf_token %}
+    <div>
+        <label>Nombre *</label>
+        <div>
+            {{form.name}}
+        </div>
+        {{form.name.errors}}
+    </div>
+    <div>
+        <label>Email *</label>
+        <div>
+            {{form.email}}
+        </div>
+        {{form.email.errors}}
+    </div>
+    <div>
+        <label>Mensaje *</label>
+        <div>
+            {{form.content}}
+        </div>
+        {{form.content.errors}}
+    </div>
+    <div>
+        <input type="submit" value="Enviar">
+    </div>
+</form>
+-->
+{% endblock %}
